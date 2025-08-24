@@ -45,7 +45,7 @@ The package can be downloaded here - <a style="font-size: 16px; font-weight: bol
 
 ---
 <div style="text-align:justify;">  
-Note that $\texttt{NL0R}$ is a second-order method, requiring the objective, gradient, and sub-Hessian of $f$. Below is an example of how to define functions for the solver to solve a simple SRO problem, where input $\texttt{x}$ is the variable, string variable $\texttt{key}$ specifies the computation: $\texttt{key}$='$\texttt{fg}$' for the objective value and the gradient, and $\texttt{key}$='$\texttt{h}$' for the sub-Hessian decided by two indix sets $\texttt{T1}$ and $\texttt{T2}$.  Specifically, when $\texttt{key}$ = '$\texttt{fg}$', if there is only one output, it returns the objective function value; if there are two outputs, the first is the objective function value and the second is the gradient. When $\texttt{key}$ = '$\texttt{h}$', if there is only one output, it returns the sub-Hessian containing the $\texttt{T1}$ rows and $\texttt{T1}$ columns of the Hessian; if there are two outputs, the first corresponds to the sub-Hessian containing the $\texttt{T1}$ rows and $\texttt{T1}$ columns of the Hessian, and the second corresponds to the sub-Hessian containing the $\texttt{T1}$ rows and $\texttt{T2}$ columns of the Hessian.
+Note that $\texttt{NL0R}$ is a second-order method, requiring the objective, gradient, and sub-Hessian of $f$. Below is an example of how to define these functions for the solver to solve a simple problem, where input $\texttt{x}$ is the variable, string variable $\texttt{key}$ specifies the computation: $\texttt{key}$='$\texttt{fg}$' for the objective value and the gradient, and $\texttt{key}$='$\texttt{h}$' for the sub-Hessian decided by two indix sets $\texttt{T1}$ and $\texttt{T2}$.  Specifically, when $\texttt{key}$ = '$\texttt{fg}$', if there is only one output, it returns the objective function value; if there are two outputs, the first is the objective function value and the second is the gradient. When $\texttt{key}$ = '$\texttt{h}$', if there is only one output, it returns the sub-Hessian containing the $\texttt{T1}$ rows and $\texttt{T1}$ columns of the Hessian; if there are two outputs, the first corresponds to the sub-Hessian containing the $\texttt{T1}$ rows and $\texttt{T1}$ columns of the Hessian, and the second corresponds to the sub-Hessian containing the $\texttt{T1}$ rows and $\texttt{T2}$ columns of the Hessian.
 </div>
 <p style="line-height: 1;"></p>
 
@@ -71,7 +71,7 @@ end
 ```
 
 <div style="text-align:justify;">
-After defining the functions for the simple SRO problem, one can call $\texttt{NL0R}$ to solve it. Users need to specify ($\texttt{func}$, $\texttt{n}$, $\texttt{lambda}$), set some parameters in $\texttt{pars}$ if necessary, and then run the solver. The following codes demonstrate $\texttt{NL0R}$ to solve this simple SRO problem.
+After defining the functions for the simple problem, one can call $\texttt{NL0R}$ to solve it. Users need to specify ($\texttt{func}$, $\texttt{n}$, $\texttt{lambda}$), set some parameters in $\texttt{pars}$ if necessary, and then run the solver. The following codes demonstrate $\texttt{NL0R}$ to solve this simple problem.
 </div>
 <p style="line-height: 1;"></p>
 
