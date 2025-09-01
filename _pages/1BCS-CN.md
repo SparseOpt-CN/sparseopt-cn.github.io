@@ -57,7 +57,7 @@ a:active {
 ---
 
 <div style="text-align:justify;">
-程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\OBCSpack.zip" target="_blank">OBCSpack</a>（点击可直接下载）提供了 2 个求解器。其核心算法分别来自以下 2 篇文章，其中， $\texttt{GPSP}$ 和 $\texttt{NM01}$ 分别用来求解模型 (DSCO) 和 (SFRO)。 
+程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\OBCSpack-Matlab.zip" target="_blank">OBCSpack-Matlab</a>（点击下载）提供了 2 个求解器。其核心算法分别来自以下 2 篇文章，其中， $\texttt{GPSP}$ 和 $\texttt{NM01}$ 分别用来求解模型 (DSCO) 和 (SFRO)。 
 </div>  
 
 > <b style="font-size:14px;color:#777777">GPSP</b> -<span style="font-size: 13.5px"> S Zhou, Z Luo, N Xiu, and G Li, Computing one-bit compressive sensing via double-sparsity constrained optimization, IEEE TSP, 70:1593-1608, 2022. </span>
@@ -65,7 +65,7 @@ a:active {
 
 ---
 <div style="text-align:justify;">
-下面代码展示了如何使用 $\texttt{OBCSpack}$ 求解 1BCS 问题。用户需输入数据 ($\texttt{A}$，$\texttt{b}$，$\texttt{s}$，$\texttt{k}$)，然后从 {'$\texttt{GPSP}$'，'$\texttt{NM01}$'} 中选择一个求解器进行求解。
+下面 Matlab 代码展示了如何使用 $\texttt{OBCSpack}$ 求解 1BCS 问题。用户需输入数据 ($\texttt{A}$，$\texttt{b}$，$\texttt{s}$，$\texttt{k}$)，然后从 {'$\texttt{GPSP}$'，'$\texttt{NM01}$'} 中选择一个求解器进行求解。
 </div>
 
 <p style="line-height: 1;"></p>
@@ -99,7 +99,7 @@ fprintf(' Hamming distence:      %6.3f\n',nnz(sign(A*out.sol)-b)/m)
 ```
 
 <div style="text-align:justify;">
-程序包 $\texttt{OBCSpack}$ 的输入和输出如下所示，其中输入 ($\texttt{A}$，$\texttt{b}$，$\texttt{s}$，$\texttt{k}$，$\texttt{solver}$) 为必需项。因为 $\texttt{NM01}$ 求解模型 (SFRO)，所以无需参数 $\texttt{s}$ 和 $\texttt{k}$。因此，如果选择 $\texttt{solver}$='$\texttt{NM01}$'，则当 $\texttt{s}$ 和 $\texttt{k}$ 未知时，可以将它们设置为 $\texttt{[]}$。参数 $\texttt{pars}$ 是可选的，但设置其中的一些参数可以提升求解器的性能和解的质量。
+程序包 $\texttt{OBCSpack-Matlab}$ 的输入和输出（Python 版本的输入和输出类似）如下所示，其中输入 ($\texttt{A}$，$\texttt{b}$，$\texttt{s}$，$\texttt{k}$，$\texttt{solver}$) 为必需项。因为 $\texttt{NM01}$ 求解模型 (SFRO)，所以无需参数 $\texttt{s}$ 和 $\texttt{k}$。因此，如果选择 $\texttt{solver}$='$\texttt{NM01}$'，则当 $\texttt{s}$ 和 $\texttt{k}$ 未知时，可以将它们设置为 $\texttt{[]}$。参数 $\texttt{pars}$ 是可选的，但设置其中的一些参数可以提升求解器的性能和解的质量。
 </div>
 
 <p style="line-height: 1;"></p>
