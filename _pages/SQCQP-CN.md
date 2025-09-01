@@ -47,7 +47,7 @@ a:active {
 <!--## <span style="color:#8C8C8C"> The solver and its demonstration </span> -->
 --- 
 <div style="text-align:justify;">
-程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SQCQP-Matlab.zip" target="_blank">SQSQP-Matlab</a>（点击下载）提供了 1 个求解器 $\texttt{SNSQP}$，其核心算法来自以下文章：
+程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SQCQP-Matlab.zip" target="_blank">SQSQP-Matlab</a>（点击下载）提供了 1 个求解器，其核心算法来自以下文章：
 </div>
 
 > <b style="font-size:14px;color:#777777">SNSQP</b> - <span style="font-size: 14px"> S Li, S  Zhou, Z  Luo, Sparse quadratically constrained quadratic programming via semismooth Newton method, arXiv:2503.15109, 2025. </span>
@@ -90,7 +90,7 @@ Out           = SNSQP(n,s,Q0,q0,Qi,qi,ci,ineqA,ineqb,eqA,eqb,lb,ub,pars);
 ```
 
 <div style="text-align:justify;">
-Matlab 版本的求解器 $\texttt{SNSQP}$ 的输入和输出（Python 版本的输入和输出类似）如下所示。注意，输入 $\texttt{Qi}$ 是一个单元，包含了 (SQCQP) 中所有的 $(Q_1,\ldots,Q_k)$。如果某些约束不存在，则将其设置为 $\texttt{[ ]}$。参数 $\texttt{pars}$ 是可选的；但是，指定其中的一些参数可以提升求解器的性能和解的质量。  
+Matlab 版求解器 $\texttt{SNSQP}$ 的输入和输出（Python 版的输入和输出类似）如下所示。注意，输入 $\texttt{Qi}$ 是一个单元，包含了 (SQCQP) 中所有的 $(Q_1,\ldots,Q_k)$。如果某些约束不存在，则将其设置为 $\texttt{[ ]}$。参数 $\texttt{pars}$ 是可选的；但是，指定其中的一些参数可以提升求解器的性能和解的质量。  
 </div>
 
 <p style="line-height: 1;"></p>
