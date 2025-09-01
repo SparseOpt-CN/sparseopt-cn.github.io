@@ -62,7 +62,7 @@ a:active {
 
 ---
 <div style="text-align:justify;">
-  程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SSVMpack.zip" target="_blank">SSVMpack</a>（点击可直接下载）提供了 2 个求解器，其核心算法分别来自以下 2 篇文章，其中 $\texttt{NM01}$ 和 $\texttt{NSSVM}$ 分别用来求解模型 (SFRSVM) 和 (SCSNM)。
+  程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SSVMpack-Matlab.zip" target="_blank">SSVMpack-Matlab</a>（点击下载）提供了 2 个求解器，其核心算法分别来自以下 2 篇文章，其中 $\texttt{NM01}$ 和 $\texttt{NSSVM}$ 分别用来求解模型 (SFRSVM) 和 (SCSNM)。
 </div>  
 
 > <div style="text-align:justify;"> <b style="font-size:14px;color:#777777">NM01</b> -<span style="font-size: 14px"> S Zhou, L Pan, N Xiu, and H Qi, Quadratic convergence of smoothing Newton's method for 0/1 loss optimization, SIOPT, 31:3184-3211, 2021. </span> </div>
@@ -70,7 +70,7 @@ a:active {
 
 ---
 <div style="text-align:justify;">
-下面展示了如何使用 $\texttt{SSVMpack}$ 求解稀疏 SVM（SSVM） 问题。用户需输入数据 ($\texttt{A}$，$\texttt{y}$)，必要时对数据进行归一化处理，再从 {'$\texttt{NM01}$'，'$\texttt{NSSVM}$'} 中选择一个作为求解器，然后运行求解。
+下面 Matlab 代码展示了如何使用 $\texttt{SSVMpack}$ 求解稀疏 SVM（SSVM） 问题。用户需输入数据 ($\texttt{A}$，$\texttt{y}$)，必要时对数据进行归一化处理，再从 {'$\texttt{NM01}$'，'$\texttt{NSSVM}$'} 中选择一个作为求解器，然后运行求解。
 </div>
 
 <p style="line-height: 1;"></p>
@@ -106,7 +106,7 @@ fprintf(' Testing   Accuracy:         %5.2f%%\n',tacc*100);
 fprintf(' Number of Support Vectors:  %d\n',out.sv); 
 ```
 <div style="text-align:justify;">
-程序包 $\texttt{SSVMpack}$ 的调用形式如下所示。输入 ($\texttt{A}$，$\texttt{y}$，$\texttt{solver}$) 为必需项，其中 $\texttt{solver}$ 可从 {'$\texttt{NM01}$'，'$\texttt{NSSVM}$'} 中选择。参数 $\texttt{pars}$ 是可选的，但设置其中的一些参数（特别是 $\texttt{pars.C}$ 和 $\texttt{pars.s0}$）可以提升求解器的性能和解的质量。例如，如果 $\texttt{solver}$='$\texttt{NSSVM}$'，则设置合适的 $\texttt{pars.s0}$ 可提升解的质量。另一个重要参数是 $\texttt{pars.C}$，可通过交叉验证（Cross-validation）进行调优。</div>
+程序包 $\texttt{SSVMpack-Matlab}$ 的调用形式（Python 版本的调用形式类似）如下所示。输入 ($\texttt{A}$，$\texttt{y}$，$\texttt{solver}$) 为必需项，其中 $\texttt{solver}$ 可从 {'$\texttt{NM01}$'，'$\texttt{NSSVM}$'} 中选择。参数 $\texttt{pars}$ 是可选的，但设置其中的一些参数（特别是 $\texttt{pars.C}$ 和 $\texttt{pars.s0}$）可以提升求解器的性能和解的质量。例如，如果 $\texttt{solver}$='$\texttt{NSSVM}$'，则设置合适的 $\texttt{pars.s0}$ 可提升解的质量。另一个重要参数是 $\texttt{pars.C}$，可通过交叉验证（Cross-validation）进行调优。</div>
 <p style="line-height: 1;"></p>
 
 ```ruby
