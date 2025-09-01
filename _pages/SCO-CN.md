@@ -153,7 +153,7 @@ PlotRecovery(xopt,out.sol,[900,500,500,250],1)
 ```
 
 <div style="text-align:justify;">
-程序包 $\texttt{SCOpack-Matlab}$ 的输入与输出说明如下，其中输入参数 ($\texttt{func}$, $\texttt{n}$, $\texttt{s}$, $\texttt{solvername}$) 为必需项。$\texttt{pars}$ 中的参数为可选项，但设置某些参数可能会提升求解器的性能和解的质量。例如，当选择求解器 $\texttt{NHTP}$ 时，调节合适的 $\texttt{pars.eta}$ 能显著改善求解器在收敛速度和精度方面的表现。此外，求解器 $\texttt{IIHT}$ 还支持带非负约束的 SCO 问题，只需设置 $\texttt{pars.neg}$=1 即可。
+程序包 $\texttt{SCOpack-Matlab}$ 的输入与输出（Python 版本的输入和输出类似）说明如下，其中输入参数 ($\texttt{func}$, $\texttt{n}$, $\texttt{s}$, $\texttt{solvername}$) 为必需项。$\texttt{pars}$ 中的参数为可选项，但设置某些参数可能会提升求解器的性能和解的质量。例如，当选择求解器 $\texttt{NHTP}$ 时，调节合适的 $\texttt{pars.eta}$ 能显著改善求解器在收敛速度和精度方面的表现。此外，求解器 $\texttt{IIHT}$ 还支持带非负约束的 SCO 问题，只需设置 $\texttt{pars.neg}$=1 即可。
 </div>
 
 <p style="line-height: 1;"></p>
