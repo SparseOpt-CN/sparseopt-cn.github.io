@@ -102,7 +102,7 @@ fprintf(' Computational time:      %.3fsec\n',out.time);
 ```
 
 <div style="text-align:justify;">
-程序包 $\texttt{CSpack-Matlab}$ 的输入和输出（Python 版本的输入和输出类似）如下所示，其中输入 ($\texttt{A}$，$\texttt{At}$，$\texttt{b}$，$\texttt{n}$，$\texttt{s}$，$\texttt{solver}$) 为必需项。如果 $\texttt{A}$ 是一个矩阵，则 $\texttt{At}$ 可以为其转置 $\texttt{A}'$ 也可以为空 $\texttt{[]}$。 如果 $\texttt{A}$ 是函数句柄，则必须提供 $\texttt{At}$。如果 $\texttt{solver}$ 为 {'$\texttt{PSNP}$'，'$\texttt{NL0R}$'，'$\texttt{MILR1}$'} 之一，则 $\texttt{s}$ 可设置为 $\texttt{[]}$。 如果 $\texttt{solver}$ 为 {'$\texttt{NHTP}$'，'$\texttt{GPNP}$'，'$\texttt{IIHT}$'} 之一，则必须提供 $\texttt{s}$。结构体 $\texttt{pars}$ 中的参数是可选的，但设置其中的一些参数可以提升求解器的性能和解的质量。
+Matlab 版程序包 $\texttt{CSpack}$ 的输入和输出（Python 版的输入和输出类似）如下所示，其中输入 ($\texttt{A}$，$\texttt{At}$，$\texttt{b}$，$\texttt{n}$，$\texttt{s}$，$\texttt{solver}$) 为必需项。如果 $\texttt{A}$ 是一个矩阵，则 $\texttt{At}$ 可以为其转置 $\texttt{A}'$ 也可以为空 $\texttt{[]}$。 如果 $\texttt{A}$ 是函数句柄，则必须提供 $\texttt{At}$。如果 $\texttt{solver}$ 为 {'$\texttt{PSNP}$'，'$\texttt{NL0R}$'，'$\texttt{MILR1}$'} 之一，则 $\texttt{s}$ 可设置为 $\texttt{[]}$。 如果 $\texttt{solver}$ 为 {'$\texttt{NHTP}$'，'$\texttt{GPNP}$'，'$\texttt{IIHT}$'} 之一，则必须提供 $\texttt{s}$。结构体 $\texttt{pars}$ 中的参数是可选的，但设置其中的一些参数可以提升求解器的性能和解的质量。
 </div>
 
 <p style="line-height: 1;"></p>
