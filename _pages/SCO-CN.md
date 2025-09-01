@@ -50,7 +50,7 @@ a:active {
 
 ---
 <div style="text-align:justify;">  
-求解器 $\texttt{NHTP}$ 和 $\texttt{GPNP}$ 是基于二阶算法开发的, 所以需要目标函数、梯度以及海瑟矩阵子块，而 $\texttt{IIHT}$ 属于一阶方法，仅需要目标函数和梯度。基于 Matlab 语言（基于 Python 语言，可进行类似的定义）下面给出一个示例，展示如何以统一的方式为三个求解器定义函数来求解一个简单的稀疏约束优化（SCO）问题。其中，句柄函数 $\texttt{funcSimpleEx}$ 的输入中，$\texttt{x}$ 是自变量，$\texttt{key}$ 是字符串变量，$\texttt{T1}$ 和 $\texttt{T2}$ 为两个索引指标集。这里，$\texttt{key}$ 用于指定计算内容：当 $\texttt{key}$='$\texttt{fg}$' 时表示计算目标函数值和梯度，此时，若只有一个输出，则输出目标函数值，若有两个输出，则第一个输出为目标函数值，第二个输出为梯度；当 $\texttt{key}$='$\texttt{h}$' 时表示计算海瑟矩阵子块，此时，海瑟矩阵子块由两个索引指标集 $\texttt{T1}$ 和 $\texttt{T2}$ 定义，若只有一个输出，则输出的子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T1}$ 列，若有两个输出，则第一个输出子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T1}$ 列，第二个输出子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T2}$ 列。
+求解器 $\texttt{NHTP}$ 和 $\texttt{GPNP}$ 是基于二阶算法开发的, 所以需要目标函数、梯度以及海瑟矩阵子块，而 $\texttt{IIHT}$ 属于一阶方法，仅需要目标函数和梯度。基于 Matlab 语言（基于 Python 语言，可进行类似定义）下面给出一个示例，展示如何以统一的方式为三个求解器定义函数来求解一个简单的稀疏约束优化（SCO）问题。其中，句柄函数 $\texttt{funcSimpleEx}$ 的输入中，$\texttt{x}$ 是自变量，$\texttt{key}$ 是字符串变量，$\texttt{T1}$ 和 $\texttt{T2}$ 为两个索引指标集。这里，$\texttt{key}$ 用于指定计算内容：当 $\texttt{key}$='$\texttt{fg}$' 时表示计算目标函数值和梯度，此时，若只有一个输出，则输出目标函数值，若有两个输出，则第一个输出为目标函数值，第二个输出为梯度；当 $\texttt{key}$='$\texttt{h}$' 时表示计算海瑟矩阵子块，此时，海瑟矩阵子块由两个索引指标集 $\texttt{T1}$ 和 $\texttt{T2}$ 定义，若只有一个输出，则输出的子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T1}$ 列，若有两个输出，则第一个输出子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T1}$ 列，第二个输出子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T2}$ 列。
 </div>
 <p style="line-height: 1;"></p>
 
@@ -78,7 +78,7 @@ end
 ```
 
 <div style="text-align:justify;">
-对于以上一个简单的 SCO 问题，定义好函数后，就可以调用程序包 $\texttt{SCOpack-Matlab}$ 来求解该问题。用户需指定 ($\texttt{func}$, $\texttt{n}$, $\texttt{s}$)，再从 {'$\texttt{NHTP}$', '$\texttt{GPNP}$', '$\texttt{IIHT}$'} 中选择一个求解器名称，必要时在 $\texttt{pars}$ 中设置一些参数，然后运行求解器。下面的代码展示了如何使用 $\texttt{SCOpack-Matlab}$ 来求解该简单的 SCO 问题。
+对于以上一个简单的 SCO 问题，定义好函数后，就可以调用程序包 $\texttt{SCOpack-Matlab}$ 来求解该问题。用户需指定 ($\texttt{func}$, $\texttt{n}$, $\texttt{s}$)，再从 {'$\texttt{NHTP}$', '$\texttt{GPNP}$', '$\texttt{IIHT}$'} 中选择一个求解器名称，必要时在 $\texttt{pars}$ 中设置一些参数，然后运行求解器。以下 Matlab 代码展示了如何使用 $\texttt{SCOpack}$ 来求解该简单的 SCO 问题。
 </div>
 <p style="line-height: 1;"></p>
 
@@ -127,7 +127,7 @@ function [out1,out2] = funcLinReg(x,key,T1,T2,A,b)
 end
 ```
 <div style="text-align:justify;">
-在定义好稀疏线性回归问题的函数后，我们可以如下调用程序包 $\texttt{SCOpack-Matlab}$ 来求解该问题。
+在定义好稀疏线性回归问题的函数后，我们可以如下调用程序包 $\texttt{SCOpack}$ 来求解该问题。
 </div>
 <p style="line-height: 1;"></p>
 
@@ -153,7 +153,7 @@ PlotRecovery(xopt,out.sol,[900,500,500,250],1)
 ```
 
 <div style="text-align:justify;">
-程序包 $\texttt{SCOpack-Matlab}$ 的输入与输出（Python 版本的输入和输出类似）说明如下，其中输入参数 ($\texttt{func}$, $\texttt{n}$, $\texttt{s}$, $\texttt{solvername}$) 为必需项。$\texttt{pars}$ 中的参数为可选项，但设置某些参数可能会提升求解器的性能和解的质量。例如，当选择求解器 $\texttt{NHTP}$ 时，调节合适的 $\texttt{pars.eta}$ 能显著改善求解器在收敛速度和精度方面的表现。此外，求解器 $\texttt{IIHT}$ 还支持带非负约束的 SCO 问题，只需设置 $\texttt{pars.neg}$=1 即可。
+Matlab 版程序包 $\texttt{SCOpack}$ 的输入与输出（Python 版输入和输出类似）说明如下，其中输入参数 ($\texttt{func}$, $\texttt{n}$, $\texttt{s}$, $\texttt{solvername}$) 为必需项。$\texttt{pars}$ 中的参数为可选项，但设置某些参数可能会提升求解器的性能和解的质量。例如，当选择求解器 $\texttt{NHTP}$ 时，调节合适的 $\texttt{pars.eta}$ 能显著改善求解器在收敛速度和精度方面的表现。此外，求解器 $\texttt{IIHT}$ 还支持带非负约束的 SCO 问题，只需设置 $\texttt{pars.neg}$=1 即可。
 </div>
 
 <p style="line-height: 1;"></p>
