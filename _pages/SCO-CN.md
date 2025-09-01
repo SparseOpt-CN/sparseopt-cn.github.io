@@ -40,7 +40,7 @@ a:active {
 
 ---
 <div style="text-align:justify;"> 
-程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SCOpack.zip" target="_blank">SCOpack-Matlab</a>（点击可直接下载）提供了 3 个求解器，其核心算法分别来自以下 3 篇文章：
+程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SCOpack-Matlab.zip" target="_blank">SCOpack-Matlab</a>（点击可直接下载）提供了 3 个求解器，其核心算法分别来自以下 3 篇文章：
 
 </div>
 
