@@ -38,14 +38,14 @@ a:active {
  
 ---
 <div style="text-align:justify;">
-程序包 - <a style="font-size: 16px; font-weight: bold; color:#006DB0" href="\files\SROpack.zip" target="_blank">NL0R</a>（点击可直接下载）提供了 1 个求解器，其核心算法来自以下文章：
+程序包 - <a style="font-size: 16px; font-weight: bold; color:#006DB0" href="\files\SROpack-Matlab.zip" target="_blank">SROpack-Matlab</a>（点击可直接下载）提供了 1 个求解器 $\texttt{NL0R}$，其核心算法来自以下文章：
 </div>
 
 > <b style="font-size:14px;color:#777777">NL0R</b> - <span style="font-size: 14px"> S Zhou, L Pan, and N Xiu, Newton method for l0 regularized optimization, Numer Algorithms, 88:1541–1570, 2021. </span>
 
 ---
 <div style="text-align:justify;">  
-求解器 $\texttt{NL0R}$ 的核心算法属于二阶方法, 所以需要目标函数、梯度和海瑟矩阵子块。下面代码展示了对于一个简单的稀疏优化问题，如何定义这些内容。其中，句柄函数 $\texttt{funcSimpleEx}$ 的输入中，$\texttt{x}$ 是自变量，$\texttt{key}$ 是字符串变量，$\texttt{T1}$ 和 $\texttt{T2}$ 为两个索引指标集。这里，$\texttt{key}$ 用于指定计算内容：当 $\texttt{key}$='$\texttt{fg}$' 时表示计算目标函数值和梯度，此时，若只有一个输出，则输出目标函数值，若有两个输出，则第一个输出为目标函数值，第二个输出为梯度；当 $\texttt{key}$='$\texttt{h}$' 时表示计算海瑟矩阵子块，此时，海瑟矩阵子块由两个索引指标集 $\texttt{T1}$ 和 $\texttt{T2}$ 定义，若只有一个输出，则输出的子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T1}$ 列，若有两个输出，则第一个输出子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T1}$ 列，第二个输出子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T2}$ 列。
+求解器 $\texttt{NL0R}$ 的核心算法属于二阶方法, 所以需要目标函数、梯度和海瑟矩阵子块。基于 Matlab 语言（基于 Python 语言，可进行类似的定义）下面代码展示了对于一个简单的稀疏优化问题，如何定义这些内容。其中，句柄函数 $\texttt{funcSimpleEx}$ 的输入中，$\texttt{x}$ 是自变量，$\texttt{key}$ 是字符串变量，$\texttt{T1}$ 和 $\texttt{T2}$ 为两个索引指标集。这里，$\texttt{key}$ 用于指定计算内容：当 $\texttt{key}$='$\texttt{fg}$' 时表示计算目标函数值和梯度，此时，若只有一个输出，则输出目标函数值，若有两个输出，则第一个输出为目标函数值，第二个输出为梯度；当 $\texttt{key}$='$\texttt{h}$' 时表示计算海瑟矩阵子块，此时，海瑟矩阵子块由两个索引指标集 $\texttt{T1}$ 和 $\texttt{T2}$ 定义，若只有一个输出，则输出的子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T1}$ 列，若有两个输出，则第一个输出子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T1}$ 列，第二个输出子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T2}$ 列。
 </div>
 <p style="line-height: 1;"></p>
 
@@ -71,7 +71,7 @@ end
 ```
 
 <div style="text-align:justify;">
-对于以上简单的稀疏优化问题，定义好函数后，就可以调用求解器 $\texttt{NL0R}$ 来求解该问题。用户需指定 ($\texttt{func}$, $\texttt{n}$, $\texttt{s}$)，必要时在 $\texttt{pars}$ 中设置一些参数，然后运行求解器。下面的代码展示了如何使用求解器 $\texttt{NL0R}$ 来求解该简单的稀疏优化问题。
+对于以上简单的稀疏优化问题，定义好函数后，就可以调用求解器 $\texttt{NL0R}$ 来求解该问题。用户需指定 ($\texttt{func}$, $\texttt{n}$, $\texttt{s}$)，必要时在 $\texttt{pars}$ 中设置一些参数，然后运行求解器。下面的 Matlab 代码展示了如何使用求解器 $\texttt{NL0R}$ 来求解该简单的稀疏优化问题。
 </div>
 <p style="line-height: 1;"></p>
 
@@ -89,7 +89,7 @@ fprintf(' Iterations:        %4d\n', out.iter);
 ```
 
 <div style="text-align:justify;">
-对于其他问题，用户可以通过修改 $\texttt{out1}$ 和 $\texttt{out2}$，但保持 $\texttt{switch}$ 的整体结构不变，来以类似方式定义相应的函数。作为示例，下面的代码给出了稀疏线性回归问题的函数定义。
+对于其他问题，用户可以通过修改 $\texttt{out1}$ 和 $\texttt{out2}$，但保持 $\texttt{switch}$ 的整体结构不变，来以类似方式定义相应的函数。作为示例，下面的 Matlab 代码给出了稀疏线性回归问题的函数定义。
 </div>
 <p style="line-height: 1;"></p>
 
@@ -142,7 +142,7 @@ out      = NL0R(func,n,lambda,pars);
 ```
 
 <div style="text-align:justify;">
-求解器 $\texttt{NL0R}$ 的输入与输出说明如下，其中输入参数 ($\texttt{func}$, $\texttt{n}$, $\texttt{lambda}$) 为必需项。$\texttt{pars}$ 中的参数为可选项，但设置某些参数可能会提升求解器的性能和解的质量。例如，调节合适的 $\texttt{pars.eta}$ 能显著改善求解器在收敛速度和精度方面的表现。
+Matlab 版本求解器 $\texttt{NL0R}$ 的输入与输出（Python 版本的输入与输出类似）说明如下，其中输入参数 ($\texttt{func}$, $\texttt{n}$, $\texttt{lambda}$) 为必需项。$\texttt{pars}$ 中的参数为可选项，但设置某些参数可能会提升求解器的性能和解的质量。例如，调节合适的 $\texttt{pars.eta}$ 能显著改善求解器在收敛速度和精度方面的表现。
 </div>
 
 <p style="line-height: 1;"></p>
