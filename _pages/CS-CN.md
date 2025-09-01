@@ -74,7 +74,7 @@ a:active {
 
 ---
 <div style="text-align:justify;">
-基于 Matlab 语言（基于Python 语言，情况类似）以下代码展示了如何使用 $\texttt{CSpack}$ 来求解 CS 问题。用户需输入数据 ($\texttt{A}$，$\texttt{At}$，$\texttt{b}$，$\texttt{n}$，$\texttt{s}$) 并从 {'$\texttt{NHTP}$'，'$\texttt{GPNP}$'，'$\texttt{IIHT}$'，'$\texttt{PSNP}$'，'$\texttt{NL0R}$'，'$\texttt{MILR1}$'} 中选择一个作为求解器，然后运行求解。 
+以下 Matlab 代码（Python 代码类似）展示了如何使用 $\texttt{CSpack}$ 来求解 CS 问题。用户需输入数据 ($\texttt{A}$，$\texttt{At}$，$\texttt{b}$，$\texttt{n}$，$\texttt{s}$) 并从 {'$\texttt{NHTP}$'，'$\texttt{GPNP}$'，'$\texttt{IIHT}$'，'$\texttt{PSNP}$'，'$\texttt{NL0R}$'，'$\texttt{MILR1}$'} 中选择一个作为求解器，然后运行求解。 
 </div>
 
 <p style="line-height: 1;"></p>
