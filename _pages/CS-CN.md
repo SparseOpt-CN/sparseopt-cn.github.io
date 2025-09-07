@@ -92,7 +92,7 @@ xopt(T) = (0.1+rand(s,1)).*sign(randn(s,1));
 A       = randn(m,n)/sqrt(m);   
 b       = A(:,T)*xopt(T)+0.00*randn(m,1);  
 
-solver  = {'NHTP', 'GPNP', 'IIHT', 'PSNP', 'NL0R', 'MIRL1'};
+solver  = {'GPNP', 'NHTP', 'IIHT', 'PSNP', 'NL0R', 'MIRL1'};
 out     = CSpack(A,[],b,n,s,solver{1}); 
 
 fprintf(' Objective of xopt:       %.2e\n', norm(A*xopt-b)^2/2);
