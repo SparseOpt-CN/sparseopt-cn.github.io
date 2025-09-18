@@ -50,29 +50,24 @@ a:active {
 
 ---
 <div style="text-align:justify;">  
-求解器 $\texttt{NHTP}$ 和 $\texttt{GPNP}$ 是基于二阶算法开发的, 所以需要目标函数、梯度以及海瑟矩阵子块，而 $\texttt{IIHT}$ 属于一阶方法，仅需要目标函数和梯度。基于 Matlab 语言（基于 Python 语言，可进行类似定义）下面给出一个示例，展示如何以统一的方式为三个求解器定义函数来求解一个简单的稀疏约束优化（SCO）问题。其中，句柄函数 $\texttt{funcSimpleEx}$ 的输入中，$\texttt{x}$ 是自变量，$\texttt{key}$ 是字符串变量，$\texttt{T1}$ 和 $\texttt{T2}$ 为两个索引指标集。这里，$\texttt{key}$ 用于指定计算内容：当 $\texttt{key}$='$\texttt{fg}$' 时表示计算目标函数值和梯度，此时，若只有一个输出，则输出目标函数值，若有两个输出，则第一个输出为目标函数值，第二个输出为梯度；当 $\texttt{key}$='$\texttt{h}$' 时表示计算海瑟矩阵子块，此时，海瑟矩阵子块由两个索引指标集 $\texttt{T1}$ 和 $\texttt{T2}$ 定义，若只有一个输出，则输出的子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T1}$ 列，若有两个输出，则第一个输出子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T1}$ 列，第二个输出子块包含海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T2}$ 列。
+求解器 $\texttt{NHTP}$ 和 $\texttt{GPNP}$ 是基于二阶算法开发的，所以需要目标函数、梯度以及海瑟矩阵子块，而 $\texttt{IIHT}$ 属于一阶方法，仅需要目标函数和梯度。基于 Matlab 语言（基于 Python 语言，可进行类似定义）下面给出一个示例，展示如何以统一的方式为三个求解器定义函数来求解一个简单的稀疏约束优化（SCO）问题。其中，句柄函数 $\texttt{funcSimpleEx}$ 的输入中，$\texttt{x}$ 是自变量，$\texttt{key}$ 是字符串变量，$\texttt{T1}$ 和 $\texttt{T2}$ 为两个索引指标集。这里，$\texttt{key}$ 用于指定计算内容：当 $\texttt{key}$='$\texttt{f}$' 时，计算目标函数值, 当 $\texttt{key}$='$\texttt{g}$' 时，计算目标函数梯度，当 $\texttt{key}$='$\texttt{h}$' 时，计算海瑟矩阵子块包含目标函数海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T2}$ 列，这里，$\texttt{T1}$ 和 $\texttt{T2}$ 是两个索引指标集。
 </div>
 <p style="line-height: 1;"></p>
 
 ```ruby
-function [out1,out2] = funcSimpleEx(x,key,T1,T2)
+function  out = funcSimpleEx(x,key,T1,T2)
     % This code provides information for
     %     min   x'*[6 5;5 8]*x+[1 9]*x-sqrt(x'*x+1) 
-    %     s.t. \|x\|_0<=s
-    % where n=2 and s=1   
+
     a   = sqrt(sum(x.*x)+1);
     switch key
-        case 'fg'    
-            out1 = x'*[6 5;5 8]*x+[1 9]*x-a;       % objective
-            if  nargout == 2 
-                out2 = 2*[6 5;5 8]*x+[1; 9]-x./a;  % gradient
-            end
+        case 'f'    
+            out = x'*[6 5;5 8]*x+[1 9]*x-a;         % objective
+        case 'g'    
+            out = 2*[6 5;5 8]*x+[1; 9]-x./a;        % gradient
         case 'h'
-            H   = 2*[6 5;5 8]+(x*x'-a*eye(2))/a^3; % sub-Hessian formed by rows indexed by T1 and columns indexed by T1
-            out1 = H(T1,T1);
-            if  nargout == 2 
-                out2 = H(T1,T2);                   % sub-Hessian formed by rows indexed by T1 and columns indexed by T2
-            end
+            H   = 2*[6 5;5 8]+(x*x'-a*eye(2))/a^3;  % sub-Hessian indexed by T1 and T2 
+            out = H(T1,T2);
     end
 end
 ```
@@ -104,25 +99,21 @@ fprintf(' Iterations:        %4d\n', out.iter);
 <p style="line-height: 1;"></p>
 
 ```ruby
-function [out1,out2] = funcLinReg(x,key,T1,T2,A,b)
+function out = funcLinReg(x,key,T1,T2,A,b)
     % This code provides information for
     %     min   0.5*||Ax-b||^2 
-    %     s.t. \|x\|_0<=s
     % where A in R^{m x n} and b in R^{m x 1}    
+    
     switch key
-        case 'fg'
+        case 'f'
             Tx   = find(x~=0);
             Axb  = A(:,Tx)*x(Tx)-b;
-            out1 = (Axb'*Axb)/2;      % objective 
-            if  nargout == 2 
-                out2 = (Axb'*A)';     % gradient 
-            end
+            out  = (Axb'*Axb)/2;             % objective  
+        case 'g'
+            Tx   = find(x~=0); 
+            out  = ((A(:,Tx)*x(Tx)-b)'*A)';  % gradient   
         case 'h'        
-            AT   = A(:,T1); 
-            out1 = AT'*AT;            %sub-Hessian formed by rows indexed by T1 and columns indexed by T1   
-            if  nargout == 2
-                out2 = AT'*A(:,T2);   %sub-Hessian formed by rows indexed by T1 and columns indexed by T2
-            end       
+            out  = A(:,T1)'*A(:,T2);         % sub-Hessian indexed by T1 and T2       
     end
 end
 ```
