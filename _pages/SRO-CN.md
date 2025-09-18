@@ -45,7 +45,7 @@ a:active {
 
 ---
 <div style="text-align:justify;">  
-求解器 $\texttt{NL0R}$ 的核心算法属于二阶方法, 所以需要目标函数、梯度和海瑟矩阵子块。基于 Matlab 语言（基于 Python 语言，可进行类似定义）下面代码展示了对于一个简单的稀疏优化问题，如何定义这些内容。其中，句柄函数 $\texttt{funcSimpleEx}$ 的输入中，$\texttt{x}$ 是自变量，$\texttt{key}$ 是字符串变量，$\texttt{T1}$ 和 $\texttt{T2}$ 为两个索引指标集。这里，$\texttt{key}$ 用于指定计算内容：当 $\texttt{key}$='$\texttt{f}$' 时，计算目标函数值；当 $\texttt{key}$='$\texttt{g}$' 时，计算目标函数梯度；当 $\texttt{key}$='$\texttt{h}$' 时，计算海瑟矩阵子块包含目标函数海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T2}$ 列。
+求解器 $\texttt{NL0R}$ 的核心算法属于二阶方法, 所以需要目标函数、梯度和海瑟矩阵子块。基于 Matlab 语言（基于 Python 语言，可进行类似定义）下面代码展示了对于一个简单的稀疏优化问题，如何定义这些内容。句柄函数 $\texttt{funcSimpleEx}$ 的输入中，$\texttt{x}$ 是自变量，$\texttt{key}$ 是字符串变量，$\texttt{T1}$ 和 $\texttt{T2}$ 为两个索引指标集。这里，$\texttt{key}$ 用于指定计算内容：当 $\texttt{key}$='$\texttt{f}$' 时，计算目标函数值；当 $\texttt{key}$='$\texttt{g}$' 时，计算目标函数梯度；当 $\texttt{key}$='$\texttt{h}$' 时，计算海瑟矩阵子块包含目标函数海瑟矩阵的 $\texttt{T1}$ 行和 $\texttt{T2}$ 列。
 </div>
 <p style="line-height: 1;"></p>
 
