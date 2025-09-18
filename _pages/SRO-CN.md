@@ -53,7 +53,6 @@ a:active {
 function  out = funcSimpleEx(x,key,T1,T2)
     % This code provides information for
     %     min   x'*[6 5;5 8]*x+[1 9]*x-sqrt(x'*x+1) 
-
     a   = sqrt(sum(x.*x)+1);
     switch key
         case 'f'    
@@ -94,8 +93,7 @@ fprintf(' Iterations:        %4d\n', out.iter);
 function out = funcLinReg(x,key,T1,T2,A,b)
     % This code provides information for
     %     min   0.5*||Ax-b||^2 
-    % where A in R^{m x n} and b in R^{m x 1}    
-    
+    % where A in R^{m x n} and b in R^{m x 1}        
     switch key
         case 'f'
             Tx   = find(x~=0);
