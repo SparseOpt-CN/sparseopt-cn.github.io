@@ -53,39 +53,178 @@ a:active {
 
 > <b style="font-size:14px;color:#777777">SNSCO</b> - <span style="font-size: 14px"> S Zhou, L Pan, N Xiu,  and G  Li, A 0/1 constrained optimization solving sample average approximation for chance constrained programming, MOR, 2024. </span>
 
-<!--
-- <a style="font-size: 14px;color:#000000" href="https://jmlr.org/papers/v22/19-026.html" target="_blank"> S Zhou, N Xiu and H  Qi, Global and quadratic convergence of Newton hard-thresholding pursuit, *J Mach Learn Res*, 22:1−45, 2021.</a>
-- <a style="font-size: 14px;color:#000000" href="https://www.sciencedirect.com/science/article/pii/S1063520322000458" target="_blank"> S Zhou, Gradient projection newton pursuit for sparsity constrained optimization, *Appl Comput Harmon Anal*, 61:75-100, 2022.</a> 
-- <a style="font-size: 14px;color:#000000" href="http://www.yokohamapublishers.jp/online2/oppjo/vol13/p325.html" target="_blank"> L Pan, S Zhou, N Xiu, and H Qi, A convergent iterative hard thresholding for nonnegative sparsity optimization, *Pac J Optim*, 13:325-353, 2017.</a>  
-
 ---
 <div style="text-align:justify;">  
-Note that <b style="font-size:14px;color:#777777">NHTP</b> and <b style="font-size:14px;color:#777777">GPNP</b> are second-order methods, which require the gradient and Hessian of $f$. <b style="font-size:14px;color:#777777">IIHT</b> is a first-order method that only requires the gradient. Below is a demonstration of how to define the gradient and Hessian for <b style="font-size:14px;color:#777777">NHTP</b>.
+求解器 $\texttt{SNSCO}$ 核心算法属于二阶方法，需要用到目标函数 $f(\mathbf{x})$ 和 约束函数 $\mathbf{G}(\mathbf{x})$ 的函数值、梯度和海瑟矩阵。基于 Matlab 语言（基于 Python语言，可进行类似定义）下面用一个恢复问题作为示例，展示如何为该求解器定义这些内容。 恢复问题的目标函数为 $f(\mathbf{x})=0.5\parallel\mathbf{B}\mathbf{x}-\mathbf{d}\parallel^2$ 和约束函数为 $\mathbf{G}_{ij}(\mathbf{x})= \lbrace\mathbf{A}_{:(j-1)M+i},\mathbf{x}\rbrace-C_{ij}$。下面两段 MATLAB 代码分别定义了$f$ 和 $\mathbf{G}$ 的函数值、梯度和海瑟矩阵。例如，函数句柄 $\texttt{FuncfRecovery}$ 的输入中，$\texttt{x}$ 为变量，（$\texttt{B}$，$\texttt{d}$，$\texttt{BtB}$）为函数 $f(\mathbf{x})$ 中涉及的数据。在调用函数 $\texttt{FuncfRecovery}$ 时，这些数据需要用户自己定义。 
+</div>
+<p style="line-height: 1;"></p>
+
+```ruby
+function [objef, gradf, hessf] = FuncfRecovery(x,B,d,BtB)
+    % This code provides information for an objective function
+    %     f(x) = 0.5*||Bx-d||^2  
+    % x is the variable 
+    % (B,d,BtB) are data and need to be input
+    % B\in R^{m by n}, d\in R^{m by 1}, and BtB = B'*B
+    
+    Bxd   = B*x-d;
+    objef = norm(Bxd)^2/2;  % objective
+    if  nargout>1
+        gradf = (Bxd'*B)';  % gradient
+        hessf = BtB;        % Hessian
+    end
+    clear B d BtB
+end
+```
+
+```ruby
+function [G,gradG,gradGW, hessGW] = FuncGRecovery(x,W,Ind,A,C,K,M,N) 
+    % This code provides information for function G(x): R^K -> R^{M x N}
+    % (x,W,Ind) are variables
+    % (A,C,K,M,N) are data and parameters, and need to be input 
+    % For each i=1,...,M and j=1,...,N:
+    %           G_{ij}(x) = <A_{:,(j-1)*M+i}, x>^2 - C_{ij} 
+    % where A_{:,(j-1)*M+i} is the ((j-1)*M+i)th column of A
+    % A \in R^{K by M*N} and C \in R^{M by N} 
+    
+    G0  = x'*A;
+    G   = reshape(G0,M,N);
+    G   = G.^2-C;                                         % function
+    if  nargout > 1
+        if  isempty(Ind) 
+            gradG   = [];
+            gradGW  = zeros(K,1);                         % gradient
+            hessGW  = zeros(K,1);                         % Hessian
+        else 
+            AInd    = A(:,Ind);    
+            gradG   = AInd.*G0(Ind); 
+            WInd    = W(Ind);
+            gradGW  = gradG*reshape(WInd,length(Ind),1);  % gradient
+            hessGW  = AInd*diag(WInd)*AInd.';             % Hessian     
+        end
+    end  
+    clear A C K M N
+end
+```
+
+<div style="text-align:justify;">  
+定义完目标函数 $f(\mathbf{x})$ 和 约束函数 $\mathbf{G}(\mathbf{x})$ 后，用户需要选择约束集 $\Omega$。目前，$\Omega$ 允许取 {'$\texttt{Ball}$','$\texttt{Box}$','$\texttt{Halfspace}$','$\texttt{Hyperplane}$'} 中的一个。当取每一个集合时，会设计相应的参数（例如，对于盒子约束需要设置上下界）。这里，当盒子约束中的下界取 $-\infty$ 和 上界取 $+\infty$， 则 $\Omega$ 为无约束；下界取 $0$ 和 上界取 $+\infty$，则 $\Omega$ 为非负约束。对于其他约束，参数详见上面的模型介绍。选择完约束集 $\Omega$ 后，就可以调用 $\texttt{SNSCO}$ 来求解该问题。下面的 Matlab 代码展示了如何求解该回复问题的的过程。
 </div>
 
 <p style="line-height: 1;"></p>
 
 ```ruby
-function [out1,out2] = funCS(x,T1,T2,data)
+% demon recovery problems
+clc; close all; clear all; addpath(genpath(pwd));
 
-    if  isempty(T1) && isempty(T2) 
-        Tx   = find(x); 
-        Axb  = data.A(:,Tx)*x(Tx)-data.b;
-        out1 = norm(Axb,'fro')^2/2;               %objective 
-        if  nargout == 2
-            out2    = (Axb'*data.A)';             %gradient
-        end
-    else        
-        AT = data.A(:,T1); 
-        if  length(T1)<2000
-            out1 = AT'*AT;                        %subHessian containing T1 rows and T1 columns
-        else
-            out1 = @(v)( (AT*v)'*AT )';      
-        end       
-        if  nargout == 2
-            out2 = @(v)( (data.A(:,T2)*v)'*AT )'; %subHessian containing T1 rows and T2 columns
-        end       
-    end     
+K     = 10; 
+M     = 10; 
+N     = 100;
+alpha = 0.05;
+s     = ceil(alpha*N);
+
+sets = {'Ball','Box','Halfspace','Hyperplane'};
+test = 1;  % Omega = {x|norm(x) <= r}  if test = 1
+           % Omega = [lb,ub]^n         if test = 2    
+           % Omega = {x|a'*x <= b}     if test = 3 
+           % Omega = {x|Ax = b}        if test = 4 
+switch sets{test}
+    case 'Ball'
+        input1  = 2;
+        input2  = [];
+        xopt    = randn(K,1);
+        xopt    = input1/norm(xopt)*xopt;
+    case 'Box'
+        input1  = -2;
+        input2  = 2;
+        xopt    = input1 + (input2-input1)*rand(K,1); 
+    case 'Halfspace'
+        xopt    = rand(K,1);
+        input1  = randn(K,1);
+        input2  = sum(input1.*xopt)+rand(1); 
+    case 'Hyperplane'
+        xopt    = randn(K,1);
+        input1  = randn(ceil(0.5*K),K);
+        input2  = input1*xopt; 
 end
+
+% Generate data and define f and G
+B           = randn(ceil(0.25*K),K)/sqrt(K);
+d           = B*xopt;
+BtB         = B'*B;
+xi          = randn(K,M,N);
+T           = randperm(N,s);
+Mat         = rand(M,N);
+Delta       = (Mat>=0.5) .* rand(M,N);
+Delta(:,T)  = (Mat(:,T)<1/3).*rand(M,nnz(T))-(Mat(:,T)>=2/3).*rand(M,nnz(T)); 
+A           = reshape(xi,K,M*N);
+C           = (squeeze(sum(xi .* xopt, 1))).^2 + Delta; 
+Funcf      = @(x)FuncfRecovery(x,B,d,BtB);            % f(x)    = 0.5||Bx-d||^2
+FuncG      = @(x,W,J)FuncGRecovery(x,W,J,A,C,K,M,N);  % G(x)_ij = <A_ij,x>^2-A_ij
+
+% set parameters and call the solver
+if  alpha  > 0.01
+    pars.tau0 = 0.5+0.5*(test>4);
+else
+    pars.tau0 = 0.01;
+    pars.thd  = 1e-1*(test==4)+1e-2*(test~=4);
+end
+out  = SNSCO(K,M,N,s,Funcf,FuncG,sets{test},input1,input2,pars);
+fprintf(' Relerr:    %7.3e \n', norm(out.x-xopt)/norm(xopt));  
 ```
- -->
+
+<div style="text-align:justify;">
+Matlab 版求解器 $\texttt{SNSCO}$ 的输入与输出（Python 版的输入与输出类似）说明如下，其中输入参数 ($\texttt{K}$, $\texttt{M}$, $\texttt{N}$, $\texttt{s}$, $\texttt{Funcf}$, $\texttt{FuncG}$, $\texttt{FeaSet}$, $\texttt{input1}$, $\texttt{input2}$) 为必需项。$\texttt{pars}$ 中的参数为可选项，但设置某些参数可能会提升求解器的性能和解的质量。 需要注意的是，$\texttt{FeaSet}$ 只能取 {'$\texttt{Ball}$','$\texttt{Box}$','$\texttt{Halfspace}$','$\texttt{Hyperplane}$'} 中的一个。对于每一个集合，有两个输入 $\texttt{input1}$ 和 $\texttt{input2}$。当不需要某个输入时，可以设置为空 $\texttt{[ ]}$。例如，当 $\texttt{FeaSet}$='$\texttt{Ball}$' 时， 可设置为 $\texttt{input1}$=2 和 $\texttt{input2}$=$\texttt{[ ]}$，表示半径为 2 的球约束。当 $\texttt{FeaSet}$='$\texttt{Box}$' 时， 可设置为 $\texttt{input1}$=0 和 $\texttt{input2}$ = $\texttt{Inf}$，表示非负约束。
+</div>
+
+<p style="line-height: 1;"></p>
+
+```ruby
+function out = SNSCO(K,M,N,s,Funcf,FuncG,FeaSet,input1,input2,pars)
+% This solver solves 0/1 constrained optimization in the following form:
+%
+%         min_{x\in\R^K} f(x),  s.t. \| G(x) \|^+_0<=s, x\in Omega 
+%
+% where 
+%      f(x) : \R^K --> \R
+%      G(x) : \R^K --> \R^{M-by-N}
+%      s << N 
+%      \|Z\|^+_0 counts the number of columns with positive maximal values
+%      Omega is a closed and convex set
+% -------------------------------------------------------------------------
+% Inputs:
+%   K     : Dimnesion of variable x                              (REQUIRED)
+%   M     : Row number of G(x)                                   (REQUIRED)
+%   N     : Column number of G(x)                                (REQUIRED)
+%   s     : An integer in [1,N), typical choice ceil(0.01*N)     (REQUIRED)
+%   Funcf : Function handle of f(x)                              (REQUIRED)
+%   FuncG : Function handle of G(x)                              (REQUIRED)
+%   FeaSet: Feasible set for x, must be one of:                  (REQUIRED)
+%          'Box'                [lb,ub]^K,
+%          'Ball'               {x|norm(x) <= r}, 
+%          'Halfspace',         {x|a'*x <= b},
+%          'Hyperplane'.        {x|Ax = b},
+%           Default: R^n
+%   input1: A parameter related to FeasSet                       (REQUIRED)
+%   input2: A parameter related to FeasSet                       (REQUIRED)
+%   pars  : All parameters are OPTIONAL  
+%           pars.x0    -- Initial point (default:ones(K,1)) 
+%           pars.tau0  -- A vector of a number of  \tau0       (default  1)
+%                         e.g.,pars.tau0=logspace(log10(.5),log10(1.75),20) 
+%           pars.tol   -- Tolerance of halting condition (default 1e-6*M*N)
+%           pars.maxit -- Maximum number of iterations       (default 2000) 
+%           pars.disp  -- Show results or not at each step      (default 1)
+% -------------------------------------------------------------------------
+% Outputs:
+%     out.x:      Solution x
+%     out.obj:    Objective function value f(x)
+%     out.G:      Function value of G(x) 
+%     out.time:   CPU time
+%     out.iter:   Number of iterations 
+%     out.error:  Error
+%     out.Error:  Error of every iteration
+% -------------------------------------------------------------------------
+% Send your comments and suggestions to <<< slzhou2021@163.com >>>                                  
+% WARNING: Accuracy may not be guaranteed!!!!!  
+% -------------------------------------------------------------------------
+```
