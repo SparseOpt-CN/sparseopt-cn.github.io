@@ -222,10 +222,6 @@ function out = SNSCO(K,M,N,s,Funcf,FuncG,FeaSet,input1,input2,pars)
 %     out.error:  Error
 %     out.Error:  Error of every iteration
 % -------------------------------------------------------------------------
-% Written by Shenglong Zhou on 30/4/2024 based on the algorithm proposed in
-%     Shenglong Zhou, Lili Pan, Naihua Xiu, and Geoffrey Ye Li, 
-%     0/1 constrained optimization solving sample average approximation 
-%     for chance constrained programming, Math Oper Res, 2024    	
 % Send your comments and suggestions to <<< slzhou2021@163.com >>> 
 % WARNING: Accuracy may not be guaranteed!!!!!  
 % -------------------------------------------------------------------------
