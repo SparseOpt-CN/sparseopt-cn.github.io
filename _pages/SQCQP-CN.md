@@ -47,7 +47,7 @@ a:active {
 <!--## <span style="color:#8C8C8C"> The solver and its demonstration </span> -->
 --- 
 <div style="text-align:justify;">
-程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SQCQP-Matlab.zip" target="_blank">SQSQP-Matlab</a> 和 <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SQCQP-Python.zip" target="_blank">SQSQP-Python</a>（点击下载）提供了 1 个求解器，其核心算法来自以下文章：
+程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SQCQPpack-Matlab.zip" target="_blank">SQSQPpack-Matlab</a> 和 <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SQCQPpack-Python.zip" target="_blank">SQCQPpack-Python</a>（点击下载）提供了 1 个求解器，其核心算法来自以下文章：
 </div>
 
 > <b style="font-size:14px;color:#777777">SNSQP</b> - <span style="font-size: 14px"> S Li, S  Zhou, Z  Luo, Sparse quadratically constrained quadratic programming via semismooth Newton method, arXiv:2503.15109, 2025. </span>
