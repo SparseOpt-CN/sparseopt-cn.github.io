@@ -153,4 +153,7 @@ function out = OBCSpack(A,b,s,k,solver,pars)
 %     out.iter:  Number of iterations
 %     out.obj:   Objective function value at out.sol 
 % ------------------------------------------------------------------------
+% Send your comments and suggestions to <<< slzhou2021@163.com >>> 
+% WARNING: Accuracy may not be guaranteed!!!!!  
+% ------------------------------------------------------------------------
 ```
