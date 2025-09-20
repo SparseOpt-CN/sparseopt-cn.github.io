@@ -40,7 +40,7 @@ a:active {
 
 ---
 <div style="text-align:justify;"> 
-程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SFROpack-Matlab.zip" target="_blank">SFROpack-Matlab</a>（点击下载）提供了 1 个求解器，其核心算法来自以下文章：  
+程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SFROpack-Matlab.zip" target="_blank">SFROpack-Matlab</a> 和 <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SFROpack-Python.zip" target="_blank">SFROpack-Python</a>（点击下载）提供了 1 个求解器，其核心算法来自以下文章：  
 </div>
 
 > <b style="font-size:14px;color:#777777">NM01</b> - <span style="font-size: 14px"> S Zhou, L Pan, N Xiu,  and H Qi, Quadratic convergence of smoothing Newton's method for 0/1 loss optimization, SIOPT, 31:3184–3211, 2021. </span>
