@@ -35,11 +35,10 @@ a:active {
 其中， 矩阵 $\mathbf{G}(\mathbf{x})\in\mathbb{R}^{M \times N}$ 的第 $(i,j)$ 个元素为 $G_{ij}(\mathbf{x})$，函数 $f:\mathbb{R}^{K}\rightarrow \mathbb{R}$ 和 $G_{ij}:\mathbb{R}^{K}\rightarrow \mathbb{R}$ 连续可微，最好二次连续可微，正整数 $s\ll n$，集合 $\Omega\subseteq\mathbb{R}^{K}$ 闭凸。目前， $\Omega$ 可以是以下集合之一：
   </div>
   
-- 非负锥: $\lbrace\mathbf{x}: x_i \geq 0, i=1,\ldots,K\rbrace$ 
-- 盒子:  $\lbrace\mathbf{x}: l\leq x_i \leq u, i=1,\ldots,K\rbrace$，其中 $u \geq l\in\mathbb{R}$ 
 - 球: $\lbrace\mathbf{x}: \parallel\mathbf{x}\parallel^2\leq r\rbrace$，其中 $r>0$: 
 - 半空间: $\lbrace\mathbf{x}: \mathbf{a}^T\mathbf{x}\leq b\rbrace$，其中 $\mathbf{a}\in\mathbb{R}^{K}$ 和 $b\in\mathbb{R}$
 - 超平面: $\lbrace\mathbf{x}: \mathbf{A} \mathbf{x}=  \mathbf{b}\rbrace$，其中 $\mathbf{A}\in\mathbb{R}^{S\times K}$ 和 $ \mathbf{b}\in\mathbb{R}^{S}$
+- 盒子:  $\lbrace\mathbf{x}: l\leq x_i \leq u, i=1,\ldots,K\rbrace$，其中 $l \leq u$ 分别可以取值 $-\infty$ 和 $+\infty$。因此，当 $l=-\infty$ 和 $u=+\infty$， $\Omega$ 为无约束；当 $l=0$ 和 $u=+\infty$， $\Omega$ 为非负约束
 
 <div style="text-align:justify;">  
   度量 $\|\mathbf{Z}\|_0^+$ 计算矩阵 $\mathbf{Z}\in\mathbb{R}^{M \times N}$ 中含有正元素的列的个数，即
