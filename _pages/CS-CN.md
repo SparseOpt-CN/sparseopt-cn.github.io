@@ -63,7 +63,7 @@ a:active {
 </div> 
 ---
 <div style="text-align:justify;">
-程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\CSpack-Matlab.zip" target="_blank">CSpack-Matlab</a>（点击下载）提供了 6 个求解器。其核心算法分别来自以下 6 篇文章，其中，$\texttt{NHTP}$、  $\texttt{GPSP}$ 和 $\texttt{IIHT}$ 适用于模型 (SCCS)，$\texttt{PSNP}$ 适用于模型 (L0-RCS) 和 (Lq-RCS) (0<q<1)，$\texttt{NL0R}$ 适用于模型 (L0-RCS)，$\texttt{MIRL1}$ 适用于模型 (RL1CS)。
+程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\CSpack-Matlab.zip" target="_blank">CSpack-Matlab</a> 和 <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\CSpack-Python.zip" target="_blank">CSpack-Python</a>（点击下载）提供了 6 个求解器。其核心算法分别来自以下 6 篇文章，其中，$\texttt{NHTP}$、  $\texttt{GPSP}$ 和 $\texttt{IIHT}$ 适用于模型 (SCCS)，$\texttt{PSNP}$ 适用于模型 (L0-RCS) 和 (Lq-RCS) (0<q<1)，$\texttt{NL0R}$ 适用于模型 (L0-RCS)，$\texttt{MIRL1}$ 适用于模型 (RL1CS)。
 </div>  
 > <b style="font-size:14px;color:#777777">NHTP</b> - <span style="font-size: 14px"> S Zhou, N Xiu, and H Qi, Global and quadratic convergence of Newton hard-thresholding pursuit, JMLR, 22:1-45, 2021. </span>
 <br><b style="font-size:14px;color:#777777">GPSP</b> - <span style="font-size: 14px"> S Zhou, Gradient projection Newton pursuit for sparsity constrained optimization, ACHA, 61:75-100, 2022. </span>
