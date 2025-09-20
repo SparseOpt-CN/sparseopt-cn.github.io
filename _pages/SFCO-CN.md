@@ -55,7 +55,7 @@ a:active {
 
 ---
 <div style="text-align:justify;">  
-求解器 $\texttt{SNSCO}$ 核心算法属于二阶方法，需要用到目标函数 $f(\mathbf{x})$ 和 约束函数 $\mathbf{G}(\mathbf{x})$ 的函数值、梯度和海瑟矩阵。基于 Matlab 语言（基于 Python语言，可进行类似定义）下面用一个恢复问题作为示例，展示如何为该求解器定义这些内容。 恢复问题的目标函数为 $f(\mathbf{x})=0.5\parallel\mathbf{B}\mathbf{x}-\mathbf{d}\parallel^2$ 和约束函数为 $\mathbf{G}_{ij}(\mathbf{x})= \lbrace\mathbf{A}_{:(j-1)M+i},\mathbf{x}\rbrace-C_{ij}$。下面两段 MATLAB 代码分别定义了$f$ 和 $\mathbf{G}$ 的函数值、梯度和海瑟矩阵。例如，函数句柄 $\texttt{FuncfRecovery}$ 的输入中，$\texttt{x}$ 为变量，（$\texttt{B}$，$\texttt{d}$，$\texttt{BtB}$）为函数 $f(\mathbf{x})$ 中涉及的数据。在调用函数 $\texttt{FuncfRecovery}$ 时，这些数据需要用户自己定义。 
+求解器 $\texttt{SNSCO}$ 核心算法属于二阶方法，需要用到目标函数 $f(\mathbf{x})$ 和 约束函数 $\mathbf{G}(\mathbf{x})$ 的函数值、梯度和海瑟矩阵。基于 Matlab 语言（基于 Python语言，可进行类似定义）下面用一个恢复问题作为示例，展示如何为该求解器定义这些内容。 恢复问题的目标函数为 $f(\mathbf{x})=0.5\parallel\mathbf{B}\mathbf{x}-\mathbf{d}\parallel^2$ 和约束函数为 $\mathbf{G}_{ij}(\mathbf{x})= \langle\mathbf{A}_{:(j-1)M+i}, \mathbf{x}\rangle-C_{ij}$。下面两段 MATLAB 代码分别定义了$f$ 和 $\mathbf{G}$ 的函数值、梯度和海瑟矩阵。例如，函数句柄 $\texttt{FuncfRecovery}$ 的输入中，$\texttt{x}$ 为变量，（$\texttt{B}$，$\texttt{d}$，$\texttt{BtB}$）为函数 $f(\mathbf{x})$ 中涉及的数据。在调用函数 $\texttt{FuncfRecovery}$ 时，这些数据需要用户自己定义。 
 </div>
 <p style="line-height: 1;"></p>
 
