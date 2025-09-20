@@ -69,10 +69,8 @@ function [objef, gradf, hessf] = FuncfRecovery(x,B,d,BtB)
     
     Bxd   = B*x-d;
     objef = norm(Bxd)^2/2;  % objective
-    if  nargout>1
-        gradf = (Bxd'*B)';  % gradient
-        hessf = BtB;        % Hessian
-    end
+    gradf = (Bxd'*B)';      % gradient
+    hessf = BtB;            % Hessian
     clear B d BtB
 end
 ```
@@ -114,7 +112,7 @@ end
 <p style="line-height: 1;"></p>
 
 ```ruby
-% demon recovery problems
+% demon recovery problems 
 clc; close all; clear all; addpath(genpath(pwd));
 
 K     = 10; 
@@ -123,11 +121,11 @@ N     = 100;
 alpha = 0.05;
 s     = ceil(alpha*N);
 
-sets = {'Ball','Box','Halfspace','Hyperplane'};
-test = 1;  % Omega = {x|norm(x) <= r}  if test = 1
+test = 2;  % Omega = {x|norm(x) <= r}  if test = 1
            % Omega = [lb,ub]^n         if test = 2    
            % Omega = {x|a'*x <= b}     if test = 3 
            % Omega = {x|Ax = b}        if test = 4 
+sets = {'Ball','Box','Halfspace','Hyperplane'};
 switch sets{test}
     case 'Ball'
         input1  = 2;
@@ -135,9 +133,9 @@ switch sets{test}
         xopt    = randn(K,1);
         xopt    = input1/norm(xopt)*xopt;
     case 'Box'
-        input1  = -2;
-        input2  = 2;
-        xopt    = input1 + (input2-input1)*rand(K,1); 
+        input1  = -2; % can be -inf
+        input2  = 2;  % can be inf
+        xopt    = max(-10,input1)+(min(10,input2)-max(-10,input1))*rand(K,1); 
     case 'Halfspace'
         xopt    = rand(K,1);
         input1  = randn(K,1);
@@ -164,13 +162,13 @@ FuncG  = @(x,W,J)FuncGRecovery(x,W,J,A,C,K,M,N);  % G(x)_ij = <A_ij,x>^2-C_ij
 
 % set parameters and call the solver
 if  alpha  > 0.01
-    pars.tau0 = 0.5+0.5*(test>4);
+    pars.tau0 = 0.05+0.05*(test>4);
 else
     pars.tau0 = 0.01;
     pars.thd  = 1e-1*(test==4)+1e-2*(test~=4);
 end
 out  = SNSCO(K,M,N,s,Funcf,FuncG,sets{test},input1,input2,pars);
-fprintf(' Relerr:    %7.3e \n', norm(out.x-xopt)/norm(xopt));  
+fprintf(' Relative error: %7.3e \n', norm(out.x-xopt)/norm(xopt));
 ```
 
 <div style="text-align:justify;">
