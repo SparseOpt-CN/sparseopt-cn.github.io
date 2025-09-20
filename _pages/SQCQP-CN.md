@@ -149,4 +149,7 @@ function Out = SNSQP(n,s,Q0,q0,Qi,qi,ci,ineqA,ineqb,eqA,eqb,lb,ub,pars)
 %     Out.iter:          Number of iterations
 %     Out.obj:           Objective function value at Out.sol
 % --------------------------------------------------------------------------------------------------
+% Send your comments and suggestions to <<< slzhou2021@163.com >>> 
+% WARNING: Accuracy may not be guaranteed!!!!!  
+% --------------------------------------------------------------------------------------------------
 ```
