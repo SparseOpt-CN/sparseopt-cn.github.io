@@ -62,7 +62,7 @@ a:active {
 
 ---
 <div style="text-align:justify;">
-  程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SSVMpack-Matlab.zip" target="_blank">SSVMpack-Matlab</a>（点击下载）提供了 2 个求解器，其核心算法分别来自以下 2 篇文章，其中 $\texttt{NM01}$ 和 $\texttt{NSSVM}$ 分别用来求解模型 (SFRSVM) 和 (SCSNM)。
+  程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SSVMpack-Matlab.zip" target="_blank">SSVMpack-Matlab</a> 和 <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SSVMpack-Python.zip" target="_blank">SSVMpack-Python</a>（点击下载）提供了 2 个求解器，其核心算法分别来自以下 2 篇文章，其中 $\texttt{NM01}$ 和 $\texttt{NSSVM}$ 分别用来求解模型 (SFRSVM) 和 (SCSNM)。
 </div>  
 
 > <div style="text-align:justify;"> <b style="font-size:14px;color:#777777">NM01</b> -<span style="font-size: 14px"> S Zhou, L Pan, N Xiu, and H Qi, Quadratic convergence of smoothing Newton's method for 0/1 loss optimization, SIOPT, 31:3184-3211, 2021. </span> </div>
