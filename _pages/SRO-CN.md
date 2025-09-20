@@ -38,7 +38,7 @@ a:active {
  
 ---
 <div style="text-align:justify;">
-程序包 - <a style="font-size: 16px; font-weight: bold; color:#006DB0" href="\files\SROpack-Matlab.zip" target="_blank">SROpack-Matlab</a>（点击下载）提供了 1 个求解器，其核心算法来自以下文章：
+程序包 - <a style="font-size: 16px; font-weight: bold; color:#006DB0" href="\files\SROpack-Matlab.zip" target="_blank">SROpack-Matlab</a> 和 <a style="font-size: 16px; font-weight: bold; color:#006DB0" href="\files\SROpack-Python.zip" target="_blank">SROpack-Python</a>（点击下载）提供了 1 个求解器，其核心算法来自以下文章：
 </div>
 
 > <b style="font-size:14px;color:#777777">NL0R</b> - <span style="font-size: 14px"> S Zhou, L Pan, and N Xiu, Newton method for l0 regularized optimization, Numer Algorithms, 88:1541–1570, 2021. </span>
