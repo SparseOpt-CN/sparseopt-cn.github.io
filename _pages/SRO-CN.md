@@ -85,7 +85,7 @@ fprintf(' Iterations:        %4d\n', out.iter);
 ```
 
 <div style="text-align:justify;">
-对于其他问题，用户可以通过修改 $\texttt{out1}$ 和 $\texttt{out2}$，但保持 $\texttt{switch}$ 的整体结构不变，来以类似方式定义相应的函数。作为示例，下面的 Matlab 代码给出了稀疏线性回归问题的函数定义。
+对于其他问题，用户可以通过修改 $\texttt{out1}$ 和 $\texttt{out2}$，但保持 $\texttt{switch}$ 的整体结构不变，来以类似方式定义相应的函数。作为示例，下面的 Matlab 代码给出了稀疏线性回归问题的函数定义。同样，句柄函数 $\texttt{funcLinReg}$ 的输入中，（$\texttt{x}$，$\texttt{key}$，$\texttt{T1}$，$\texttt{T2}$）为变量，而（$\texttt{A}$，$\texttt{b}$）为数据。在调用函数 $\texttt{funcLinReg}$ 时，这些数据需要用户自己定义。
 </div>
 <p style="line-height: 1;"></p>
 
