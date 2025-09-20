@@ -108,7 +108,7 @@ end
 ```
 
 <div style="text-align:justify;">  
-定义完目标函数 $f(\mathbf{x})$ 和 约束函数 $\mathbf{G}(\mathbf{x})$ 后，用户需要选择约束集 $\Omega$。目前，$\Omega$ 允许取 {'$\texttt{Ball}$', '$\texttt{Box}$', '$\texttt{Halfspace}$', '$\texttt{Hyperplane}$'} 中的一个。当取每一个集合时，会设计相应的参数（例如，对于盒子约束需要设置上下界）。这里，当盒子约束中的下界取 $-\infty$ 和 上界取 $+\infty$， 则 $\Omega$ 为无约束；下界取 $0$ 和 上界取 $+\infty$，则 $\Omega$ 为非负约束。对于其他约束，参数详见上面的模型介绍。选择完约束集 $\Omega$ 后，就可以调用 $\texttt{SNSCO}$ 来求解该问题。下面的 Matlab 代码展示了如何求解该回复问题的的过程。
+定义完目标函数 $f(\mathbf{x})$ 和 约束函数 $\mathbf{G}(\mathbf{x})$ 后，用户需要选择约束集 $\Omega$。目前，$\Omega$ 允许取 {'$\texttt{Ball}$', '$\texttt{Box}$', '$\texttt{Halfspace}$', '$\texttt{Hyperplane}$'} 中的一个。当取每一个集合时，会设计相应的参数（例如，对于盒子约束需要设置上下界）。这里，当盒子约束中的下界取 $-\infty$ 和 上界取 $+\infty$， 则 $\Omega$ 为无约束；下界取 $0$ 和 上界取 $+\infty$，则 $\Omega$ 为非负约束。对于其他约束，相关参数详见上面的模型介绍。选择完约束集 $\Omega$ 后，就可以调用 $\texttt{SNSCO}$ 来求解问题。下面的 Matlab 代码展示了求解恢复问题的过程。
 </div>
 
 <p style="line-height: 1;"></p>
