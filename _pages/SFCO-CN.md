@@ -37,10 +37,12 @@ a:active {
 这里，$\mathrm{step}$ 是阶梯（又称 0/1 损失）函数，定义为：$\mathrm{step}(t)=1$ 当 $t>0$；否则 $\mathrm{step}(t)=0$。当 $M=1$，矩阵 $\mathbf{Z}$ 退化成向量 $\mathbf{z}\in\mathbb{R}^{N}$，如果令 $\mathbf{z}_+=$ $(\max\{0,z_1\}$ $\ldots$ $\max\{0,z_N\})^\top$ 以及零范数 $\parallel\mathbf{z}\parallel_0$ 计算 $\mathbf{z}$ 中非零元个数，则有  
   \begin{equation*}\|\mathbf{z}\|_0^+= \mathrm{step}(z_1)+\cdots+\mathrm{step}(z_N)=\|\mathbf{z}_+\|_0\end{equation*}
 目前， $\Omega$ 可以是以下集合之一：    
+  
 - 球: $\lbrace\mathbf{x}: \parallel\mathbf{x}\parallel^2\leq r\rbrace$，其中 $r>0$: 
 - 半空间: $\lbrace\mathbf{x}: \mathbf{a}^T\mathbf{x}\leq b\rbrace$，其中 $\mathbf{a}\in\mathbb{R}^{K}$ 和 $b\in\mathbb{R}$
 - 超平面: $\lbrace\mathbf{x}: \mathbf{A} \mathbf{x}=  \mathbf{b}\rbrace$，其中 $\mathbf{A}\in\mathbb{R}^{S\times K}$ 和 $ \mathbf{b}\in\mathbb{R}^{S}$
 - 盒子:  $\lbrace\mathbf{x}: l\leq x_i \leq u, i=1,\ldots,K\rbrace$，其中 $l \leq u$ 分别可以取值 $-\infty$ 和 $+\infty$。因此，当 $l=-\infty$ 和 $u=+\infty$， $\Omega$ 为无约束；当 $l=0$ 和 $u=+\infty$， $\Omega$ 为非负约束
+- 
 </div>
  
 <!-- ## <span style="color:#8C8C8C"> The solver and its demonstration </span> -->
