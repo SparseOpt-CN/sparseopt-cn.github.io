@@ -204,7 +204,7 @@ function out = SNSCO(K,M,N,s,Funcf,FuncG,FeaSet,input1,input2,pars)
 %          'Ball'            {x|norm(x) <= r} 
 %          'Halfspace'       {x|a'*x <= b}
 %          'Hyperplane'      {x|Ax = b}
-%           Default:          R^K
+%           Default:         R^K
 %   input1: A parameter related to FeasSet                       (REQUIRED)
 %   input2: A parameter related to FeasSet                       (REQUIRED)
 %   pars  : All parameters are OPTIONAL  
