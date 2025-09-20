@@ -149,18 +149,18 @@ switch sets{test}
 end
 
 % Generate data and define f and G
-B           = randn(ceil(0.25*K),K)/sqrt(K);
-d           = B*xopt;
-BtB         = B'*B;
-xi          = randn(K,M,N);
-T           = randperm(N,s);
-Mat         = rand(M,N);
-Delta       = (Mat>=0.5) .* rand(M,N);
-Delta(:,T)  = (Mat(:,T)<1/3).*rand(M,nnz(T))-(Mat(:,T)>=2/3).*rand(M,nnz(T)); 
-A           = reshape(xi,K,M*N);
-C           = (squeeze(sum(xi .* xopt, 1))).^2 + Delta; 
-Funcf      = @(x)FuncfRecovery(x,B,d,BtB);            % f(x)    = 0.5||Bx-d||^2
-FuncG      = @(x,W,J)FuncGRecovery(x,W,J,A,C,K,M,N);  % G(x)_ij = <A_ij,x>^2-C_ij
+B      = randn(ceil(0.25*K),K)/sqrt(K);
+d      = B*xopt;
+BtB    = B'*B;
+xi     = randn(K,M,N);
+T      = randperm(N,s);
+Mat    = rand(M,N);
+D      = (Mat>=0.5) .* rand(M,N);
+D(:,T) = (Mat(:,T)<1/3).*rand(M,nnz(T))-(Mat(:,T)>=2/3).*rand(M,nnz(T)); 
+A      = reshape(xi,K,M*N);
+C      = (squeeze(sum(xi .* xopt, 1))).^2 + D; 
+Funcf  = @(x)FuncfRecovery(x,B,d,BtB);            % f(x)    = 0.5||Bx-d||^2
+FuncG  = @(x,W,J)FuncGRecovery(x,W,J,A,C,K,M,N);  % G(x)_ij = <A_ij,x>^2-C_ij
 
 % set parameters and call the solver
 if  alpha  > 0.01
