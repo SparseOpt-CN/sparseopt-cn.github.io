@@ -42,7 +42,6 @@ a:active {
 - 半空间: $\lbrace\mathbf{x}: \mathbf{a}^T\mathbf{x}\leq b\rbrace$，其中 $\mathbf{a}\in\mathbb{R}^{K}$ 和 $b\in\mathbb{R}$
 - 超平面: $\lbrace\mathbf{x}: \mathbf{A} \mathbf{x}=  \mathbf{b}\rbrace$，其中 $\mathbf{A}\in\mathbb{R}^{S\times K}$ 和 $ \mathbf{b}\in\mathbb{R}^{S}$
 - 盒子:  $\lbrace\mathbf{x}: l\leq x_i \leq u, i=1,\ldots,K\rbrace$，其中 $l \leq u$ 分别可以取值 $-\infty$ 和 $+\infty$。因此，当 $l=-\infty$ 和 $u=+\infty$， $\Omega$ 为无约束；当 $l=0$ 和 $u=+\infty$， $\Omega$ 为非负约束
- 
 </div>
  
 <!-- ## <span style="color:#8C8C8C"> The solver and its demonstration </span> -->
