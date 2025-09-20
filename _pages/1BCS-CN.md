@@ -57,7 +57,7 @@ a:active {
 ---
 
 <div style="text-align:justify;">
-程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\OBCSpack-Matlab.zip" target="_blank">OBCSpack-Matlab</a>（点击下载）提供了 2 个求解器。其核心算法分别来自以下 2 篇文章，其中， $\texttt{GPSP}$ 和 $\texttt{NM01}$ 分别用来求解模型 (DSCO) 和 (SFRO)。 
+程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\OBCSpack-Matlab.zip" target="_blank">OBCSpack-Matlab</a> 和 <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\OBCSpack-Python.zip" target="_blank">OBCSpack-Python</a>（点击下载）提供了 2 个求解器。其核心算法分别来自以下 2 篇文章，其中， $\texttt{GPSP}$ 和 $\texttt{NM01}$ 分别用来求解模型 (DSCO) 和 (SFRO)。 
 </div>  
 
 > <b style="font-size:14px;color:#777777">GPSP</b> -<span style="font-size: 13.5px"> S Zhou, Z Luo, N Xiu, and G Li, Computing one-bit compressive sensing via double-sparsity constrained optimization, IEEE TSP, 70:1593-1608, 2022. </span>
