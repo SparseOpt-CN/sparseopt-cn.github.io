@@ -29,7 +29,7 @@ a:active {
 ##  欢迎访问 SparseOpt Toolbox 中文版
 
 <div style="text-align:justify">  
-<b>SparseOpt Toolbox</b> 旨在促进稀疏优化数值计算的发展，并构建一个专用平台，提供多个求解器，以支持求解各类稀疏优化应用问题。当前版本包含以下求解器，每个求解器提供了 Matlab 和 Python 两个版本：
+<b>SparseOpt Toolbox</b> 旨在促进稀疏优化数值计算的发展，并构建一个专用平台，提供多个求解器，以支持求解各类稀疏优化应用问题。当前版本包含以下求解器，每个求解器具备 Matlab 和 Python 两个版本：
 </div>
 
 <p style="line-height: 2;"></p>
