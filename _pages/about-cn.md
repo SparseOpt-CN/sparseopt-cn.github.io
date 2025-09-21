@@ -45,5 +45,5 @@ a:active {
 
 <p style="line-height: 2;"></p>
 <div style="text-align:justify">  
-欢迎访问 <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="https://sparseopt.github.io" target="_blank">SparseOpt Toolbox（英文版）</a>
+欢迎访问 <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="https://sparseopt.github.io" target="_blank">SparseOpt Toolbox (英文版)</a>
 </div>
