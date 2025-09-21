@@ -39,7 +39,7 @@ a:active {
 目前， 集合 $\Omega$ 可以是以下集合之一：    
 </div> 
 
-- 球: $\lbrace\mathbf{x}: \parallel\mathbf{x}\parallel^2\leq r\rbrace$，其中 $r>0$: 
+- 球: $\lbrace\mathbf{x}: \parallel\mathbf{x}\parallel\leq r\rbrace$，其中 $r>0$: 
 - 半空间: $\lbrace\mathbf{x}: \mathbf{a}^T\mathbf{x}\leq b\rbrace$，其中 $\mathbf{a}\in\mathbb{R}^{K}$ 和 $b\in\mathbb{R}$
 - 超平面: $\lbrace\mathbf{x}: \mathbf{A} \mathbf{x}=  \mathbf{b}\rbrace$，其中 $\mathbf{A}\in\mathbb{R}^{S\times K}$ 和 $ \mathbf{b}\in\mathbb{R}^{S}$
 - 盒子:  $\lbrace\mathbf{x}: l\leq x_i \leq u, i=1,\ldots,K\rbrace$，其中 $l \leq u$ 分别可以取值 $-\infty$ 和 $+\infty$。因此，当 $l=-\infty$ 和 $u=+\infty$， $\Omega$ 为无约束；当 $l=0$ 和 $u=+\infty$， $\Omega$ 为非负约束
