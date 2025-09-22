@@ -26,10 +26,10 @@ a:active {
 }
 </style>
 
-##  欢迎访问 SparseOpt Toolbox 中文版
+##  欢迎访问 SparseOpt 中文版
 
 <div style="text-align:justify">  
-<b>SparseOpt Toolbox</b> 旨在促进稀疏优化数值计算的发展，并构建一个专用平台，提供多个求解器，以支持求解各类稀疏优化应用问题。当前发布的版本包含以下求解器，每个求解器均提供 Matlab 和 Python 两个版本。
+<b>SparseOpt</b> 旨在促进稀疏优化数值计算的发展，并构建一个专用平台，提供多个求解器，以支持求解各类稀疏优化应用问题。当前发布的版本包含以下求解器，每个求解器均提供 Matlab 和 Python 两个版本。
 </div>
 
 <p style="line-height: 2;"></p>
@@ -45,5 +45,5 @@ a:active {
 
 <p style="line-height: 2;"></p>
 <div style="text-align:justify">  
-欢迎访问 <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="https://sparseopt.github.io" target="_blank">SparseOpt Toolbox (英文版)</a>
+欢迎访问 <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="https://sparseopt.github.io" target="_blank">SparseOpt (英文版)</a>
 </div>
