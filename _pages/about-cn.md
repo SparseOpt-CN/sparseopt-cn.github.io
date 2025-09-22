@@ -26,7 +26,7 @@ a:active {
 }
 </style>
 
-##  欢迎访问 SparseOpt 中文版
+##  欢迎访问 SparseOpt
 
 <div style="text-align:justify">  
 <b>SparseOpt</b> 旨在促进稀疏优化数值计算的发展，并构建一个专用平台，提供多个求解器，以支持求解各类稀疏优化应用问题。当前发布的版本包含以下求解器，每个求解器均提供 Matlab 和 Python 两个版本。
