@@ -51,7 +51,7 @@ a:active {
 程序包 - <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SFCOpack-Matlab.zip" target="_blank">SFCOpack-Matlab</a> 或 <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="\files\SFCOpack-Python.zip" target="_blank">SFCOpack-Python</a>（点击下载）提供了 1 个求解器，其核心算法来自以下文章：
 </div>
 
-> <b style="font-size:14px;color:#777777">SNSCO</b> - <span style="font-size: 14px"> S Zhou, L Pan, N Xiu,  and G  Li, A 0/1 constrained optimization solving sample average approximation for chance constrained programming, MOR, 50:2688-2716, 2025. </span>
+> <b style="font-size:14px;color:#777777">SNSCO</b> - <span style="font-size: 14px"> S Zhou, L Pan, N Xiu,  and G  Li, A 0/1 constrained optimization solving sample average approximation for chance constrained programming, MOR, 50:2688-2716, 2024. </span>
 
 ---
 <div style="text-align:justify;">  
