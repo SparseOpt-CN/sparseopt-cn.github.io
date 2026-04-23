@@ -47,3 +47,18 @@ a:active {
 <div style="text-align:justify">  
 欢迎访问 <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="https://sparseopt.github.io" target="_blank">SparseOpt (英文版)</a>
 </div>
+
+<hr style="margin-top: 0em;">
+
+<div id="footer" style="text-align: center; font-size: 0.9em; color: #666;">
+  <div id="footer-text"></div>
+
+  <span style="color: #888;">
+    总访问量: <span id="busuanzi_value_site_pv"></span> &ensp;| &ensp;
+    独立访客: <span id="busuanzi_value_site_uv"></span>
+  </span>
+  
+  <br><br>
+</div>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
