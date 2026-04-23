@@ -48,7 +48,7 @@ a:active {
 欢迎访问 <a style="font-size: 16px; font-weight: bold;color:#006DB0" href="https://sparseopt.github.io" target="_blank">SparseOpt (英文版)</a>
 </div>
 
-<hr style="margin-top: 0em;">
+<hr style="margin-top: 2em;">
 
 <div id="footer" style="text-align: center; font-size: 0.9em; color: #666;">
   <div id="footer-text"></div>
