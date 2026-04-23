@@ -50,7 +50,7 @@ a:active {
 
 <hr style="margin-top: 1em;">
 
-<div id="footer" style="text-align: center; font-size: 0.9em; color: #666;">
+<div id="footer" style="text-align: right; font-size: 0.9em; color: #666;">
   <div id="footer-text"></div>
 
   <span style="color: #888;">
